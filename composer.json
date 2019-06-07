@@ -1,14 +1,19 @@
 {
 	"name": "troychaplin79/wp-functions",
 	"description": "WordPress theme functions",
-	"keywords": ["wordpress", "theme", "core"],
-	"homepage": "http://troychaplin.ca",
+	"keywords": ["wordpress", "plugin"],
+	"homepage": "https://troychaplin.ca",
 	"license": "MIT",
-	"type": "wordpress-theme",
+	"type": "wordpress-plugin",
 	"authors": [
-		{
-			"name": "Troy Chaplin",
-			"homepage": "http://troychaplin.ca"
-		}
-	]
+    {
+      "name": "Troy Chaplin",
+      "email": "troy.chaplin@gmail.com",
+      "homepage": "https://troychaplin.ca"
+    }
+  ],
+  "require": {
+    "php": ">=5.3",
+    "composer/installers": "1.*"
+  }
 }
