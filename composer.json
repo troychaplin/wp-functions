@@ -1,0 +1,14 @@
+{
+	"name": "troychaplin79/wp-functions",
+	"description": "WordPress theme functions",
+	"keywords": ["wordpress", "theme", "core"],
+	"homepage": "http://troychaplin.ca",
+	"license": "MIT",
+	"type": "wordpress-theme",
+	"authors": [
+		{
+			"name": "Troy Chaplin",
+			"homepage": "http://troychaplin.ca"
+		}
+	]
+}
