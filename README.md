@@ -1,2 +1,3 @@
-# wp-functions
-WordPress Functions Plugin
+# WordPress Functions
+
+This plugin adds admin, global, and public specific functions
