@@ -20,21 +20,6 @@
 
 if ( is_admin() ) {
 	require_once plugin_dir_path( __FILE__ ) . '/admin/admin.php';
-
-	// ACF specific common functions
-	if ( function_exists( 'get_field' ) ) {
-		require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/acf/admin.php';
-	}
-
-	// Gravityfoms specific common functions
-	if ( class_exists( 'GFCommon' ) ) {
-		require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/gravityforms/admin.php';
-	}
-
-	// WordPress SEO specific common functions
-	if ( defined( 'WPSEO_VERSION' ) ) {
-		require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/wordpress-seo/admin.php';
-	}
 }
 
 /**
@@ -48,21 +33,6 @@ if ( is_admin() ) {
 
 if ( ! is_admin() ) {
 	require_once plugin_dir_path( __FILE__ ) . '/public/public.php';
-
-	// ACF specific common functions
-	if ( function_exists( 'get_field' ) ) {
-		require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/acf/public.php';
-	}
-
-	// Gravityfoms specific common functions
-	if ( class_exists( 'GFCommon' ) ) {
-		require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/gravityforms/public.php';
-	}
-
-	// WordPress SEO specific common functions
-	if ( defined( 'WPSEO_VERSION' ) ) {
-		require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/wordpress-seo/public.php';
-	}
 }
 
 /**
@@ -75,18 +45,3 @@ if ( ! is_admin() ) {
  */
 
 require_once plugin_dir_path( __FILE__ ) . '/global/global.php';
-
-// ACF specific common functions
-if ( function_exists( 'get_field' ) ) {
-	require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/acf/global.php';
-}
-
-// Gravityfoms specific common functions
-if ( class_exists( 'GFCommon' ) ) {
-	require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/gravityforms/global.php';
-}
-
-// WordPress SEO specific common functions
-if ( defined( 'WPSEO_VERSION' ) ) {
-	require_once plugin_dir_path( __FILE__ ) . '/wp-plugins/wordpress-seo/global.php';
-}

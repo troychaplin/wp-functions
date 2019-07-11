@@ -1,49 +1,35 @@
 <?php
 /**
- * Enqueue Front End Style and Scripts
+ * Filter to replace the [caption] shortcode text with HTML5 compliant code
  * =============
- *
- * @package Public Supports
- * @category Scripts and Styles
+
+ * @package public Supports
+ * @category WP Cleanup
  * @version 1.0
  */
 
-function wpbase_front_end_enqueues() {
+function wpbase_modify_image_shortcode_output( $val, $attr, $content = null ) {
+	extract(
+		shortcode_atts(
+			array(
+				'id'      => '',
+				'align'   => '',
+				'width'   => '',
+				'caption' => '',
+			),
+			$attr
+		)
+	);
 
-	// Remove jQuery on Front End
-	if ( ! is_admin() ) {
-		wp_deregister_script( 'jquery' );
+	if ( 1 > (int) $width || empty( $caption ) ) {
+		return $val;
 	}
 
-	// Enqueued Resource Path
-	$theme_stylesheet_path = get_template_directory_uri() . '/dist/css/styles.css';
-	$theme_javascript_path = get_template_directory_uri() . '/dist/js/scripts.js';
+	$final_image  = '<figure id="' . esc_attr( $id ) . '" aria-labelledby="figcaption_' . $id . '"  class="c-image-caption ' . esc_attr( $align ) . '">';
+	$final_image .= do_shortcode( $content );
+	$final_image .= '<figcaption id="figcaption_' . esc_attr( $id ) . '" class="c-image-caption__text">' . esc_html( $caption ) . '</figcaption>';
+	$final_image .= '</figure>';
 
-	// Change Paths for Local Development
-	if ( CURRENT_LOCAL === CURRENT_HOST || CURRENT_DEV === CURRENT_HOST ) {
-		$theme_stylesheet_path = get_template_directory_uri() . '/dist/css/styles.css&id=' . wp_rand();
-		$theme_javascript_path = get_template_directory_uri() . '/dist/js/scripts.js&id=' . wp_rand();
-	}
-
-	// Theme Scripts and Styles
-	wp_enqueue_style( 'styles', $theme_stylesheet_path, false, THEME_VERSION, 'screen' );
-	wp_enqueue_script( 'scripts', $theme_javascript_path, null, THEME_VERSION, true );
+	return $final_image;
 }
-add_action( 'wp_enqueue_scripts', 'wpbase_front_end_enqueues' );
-
-
-/**
- * Enqueue comment reply script
- * =============
- *
- * @package Public Supports
- * @category Scripts and Styles
- * @version 1.0
- */
-
-function wpbase_enqueue_comments_reply() {
-	if ( get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'comment_form_before', 'wpbase_enqueue_comments_reply' );
+add_filter( 'img_caption_shortcode', 'wpbase_modify_image_shortcode_output', 10, 3 );

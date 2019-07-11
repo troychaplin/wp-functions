@@ -16,3 +16,4 @@ function wpbase_register_primary_menu() {
 	);
 }
 add_action( 'init', 'wpbase_register_primary_menu' );
+
