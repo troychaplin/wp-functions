@@ -1,6 +1,6 @@
 {
 	"name": "troychaplin79/wp-functions",
-	"description": "WordPress theme functions",
+	"description": "This plugin adds admin, global, and public specific functions",
 	"keywords": [
 		"wordpress",
 		"plugin"
